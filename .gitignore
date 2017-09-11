@@ -1,0 +1,5 @@
+*.py[co]
+*sqlite3
+
+.ropeproject
+
