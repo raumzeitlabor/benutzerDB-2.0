@@ -9,4 +9,5 @@ from . import views
 
 urlpatterns = [
     url(r'^$', auth_views.login, name="login"),
+    url(r'^logout$', auth_views.logout, name="logout"),
 ]
