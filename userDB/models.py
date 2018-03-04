@@ -43,3 +43,13 @@ def create_user_profile(sender, instance, created, **kwargs):
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
+
+
+class SSHKey(models.Model):
+    """Stores an SSH public key that can be used to unlock the door."""
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE,
+                                related_name='ssh_keys')
+
+    name = models.CharField(max_length=200)
+    key = models.TextField()
+    hash_md5 = models.CharField(max_length=47)
