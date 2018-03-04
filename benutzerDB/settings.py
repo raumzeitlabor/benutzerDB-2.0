@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bootstrap4',
     'rest_framework',
+    'django_gravatar',
 ]
 
 MIDDLEWARE = [
@@ -129,3 +130,5 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
     ]
 }
+
+LOGIN_REDIRECT_URL = '/'
