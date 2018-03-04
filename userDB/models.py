@@ -5,6 +5,8 @@ from django.contrib.auth.models import User
 
 from django.dispatch import receiver
 
+from macaddress.fields import MACAddressField
+
 import random
 
 
@@ -22,6 +24,16 @@ class Profile(models.Model):
     member = models.BooleanField(default=False, blank=True)
     # The PIN for accessing the room. This must be a 6 digit number.
     pin = models.PositiveSmallIntegerField(null=True)
+
+
+class MACAddress(models.Model):
+    """Stores a MAC address for a given host, associated with a user.
+
+    A user can have multiple MAC addresses associated with them.
+    """
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    mac = MACAddressField(blank=False)
+    hostname = models.CharField(max_length=32)
 
 
 # When a User is a member, automatically generate a random 6-digit PIN if there
