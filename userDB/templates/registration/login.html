@@ -1,13 +1,37 @@
 {% extends "base.html" %}
-{% load bootstrap4 %}
+{% load static %}
 
 {% block title %}Login{% endblock %}
 
+{% block css %}
+	{{ block.super }}
+    <link href='{% static "css/floating-labels.css" %}' rel='stylesheet' type='text/css'>
+{% endblock %}
+
+{# No navbar on the login page #}
+{% block navbar %}{% endblock %}
+
 {% block content %}
-<form method="POST">
-{% csrf_token %}
-{% bootstrap_form form %}
-<button class="btn btn-primary" type="submit">Login</button>
+<form class="form-signin" method="POST">
+	{% csrf_token %}
+
+	<div class="text-center mb-4">
+		<img class="mb-4" src="{% static 'img/rzl-logo.svg' %}" alt="" width="72" height="72">
+		<h1 class="mb-3">RaumZeitPanel</h1>
+	</div>
+
+	<div class="form-label-group">
+		<input type="text" name="username" id="inputEmail" class="form-control" placeholder="Username" required autofocus>
+		<label for="inputEmail">Username</label>
+	</div>
+
+	<div class="form-label-group">
+		<input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+		<label for="inputPassword">Password</label>
+	</div>
+
+	<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
 </form>
+
 {% endblock %}
 

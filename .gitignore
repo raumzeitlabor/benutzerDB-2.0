@@ -2,4 +2,6 @@
 *sqlite3
 
 .ropeproject
+.venv
 
+*.sublime-*
