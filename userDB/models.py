@@ -23,6 +23,7 @@ class Profile(models.Model):
     # The PIN for accessing the room. This must be a 6 digit number.
     pin = models.PositiveSmallIntegerField(null=True)
 
+
 # When a User is a member, automatically generate a random 6-digit PIN if there
 # is none yet.
 @receiver(pre_save, sender=Profile)
@@ -30,11 +31,13 @@ def create_pin(sender, instance, **kwargs):
     if instance.member and not instance.pin:
         instance.pin = random.randint(10**5, (10**6)-1)
 
+
 # Whenever a User object is created, create a Profile for it.
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
         Profile.objects.create(user=instance)
+
 
 # Whenever a User object is modified, also save its Profile.
 @receiver(post_save, sender=User)
