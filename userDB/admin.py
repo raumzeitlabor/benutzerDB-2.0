@@ -2,6 +2,10 @@ from django.contrib import admin
 from .models import *
 
 
+class MACInline(admin.StackedInline):
+    model = MACAddress
+
+
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
     list_display = ('user', 'member')
@@ -13,3 +17,8 @@ class ProfileAdmin(admin.ModelAdmin):
 @admin.register(SSHKey)
 class SSHKeyAdmin(admin.ModelAdmin):
     readonly_fields = ('hash_md5',)
+
+
+@admin.register(MACAddress)
+class MACAdressAdmin(admin.ModelAdmin):
+    list_display = ("user", "mac", "hostname")
