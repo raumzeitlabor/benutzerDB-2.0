@@ -67,7 +67,7 @@ class SSHKey(models.Model):
         help_text=_('Automatically generated hash of the key'))
 
     def __str__(self):
-        return self.user.username
+        return self.hash_md5
 
     class Meta:
         ordering = ['hash_md5']
