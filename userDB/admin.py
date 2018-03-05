@@ -6,12 +6,17 @@ class MACInline(admin.StackedInline):
     model = MACAddress
 
 
+class SSHKeyInline(admin.StackedInline):
+    model = SSHKey
+
+
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
     list_display = ('user', 'member')
     list_filter = ('member',)
     readonly_fields = ('pin',)
     search_fields = ('user__username', 'user__first_name', 'user__last_name')
+    inlines = (MACInline,SSHKeyInline)
 
 
 @admin.register(SSHKey)
