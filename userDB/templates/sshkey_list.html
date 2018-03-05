@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class='row'>
+	<div class='col-12'>
+		<h1>{% trans 'SSH keys' %}</h1>
+
+		<p>{% blocktrans %}These SSH keys can be used to unlock the room door using <code>ssh tuer@tuer.rzl.so -p 2322</code> .{% endblocktrans %}</p>
+
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th scope="col">Name</th>
+					<th scope="col">Type</th>
+					<th scope="col">Hash</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for key in sshkey_list %}
+					<tr>
+						<td>{{ key.name }}</td>
+						<td>{{ key.key_type }}</td>
+						<td>{{ key.hash_md5 }}</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</div>
+{% endblock %}

@@ -16,7 +16,7 @@ class ProfileAdmin(admin.ModelAdmin):
 
 @admin.register(SSHKey)
 class SSHKeyAdmin(admin.ModelAdmin):
-    readonly_fields = ('hash_md5',)
+    readonly_fields = ('hash_md5', 'key_type')
 
 
 @admin.register(MACAddress)

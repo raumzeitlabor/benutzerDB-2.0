@@ -4,6 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 from django.dispatch import receiver
 from macaddress.fields import MACAddressField
+import sshpubkeys
 import random
 
 
@@ -72,6 +73,7 @@ class SSHKey(models.Model):
 
     name = models.CharField(max_length=200, verbose_name=_('Name'))
     key = models.TextField(verbose_name=_('SSH key'))
+    key_type = models.CharField(max_length=30, verbose_name=_('Key type'))
 
     hash_md5 = models.CharField(
         max_length=47, verbose_name=_('MD5 hash'),
@@ -84,3 +86,12 @@ class SSHKey(models.Model):
         ordering = ['hash_md5']
         verbose_name = _('SSH key')
         verbose_name_plural = _('SSH keys')
+
+
+@receiver(pre_save, sender=SSHKey)
+def create_pin(sender, instance, **kwargs):
+    if not instance.hash_md5 or not instance.key_type:
+        ssh = sshpubkeys.SSHKey(instance.key)
+        ssh.parse()
+        instance.hash_md5 = ssh.hash_md5()[4:]
+        instance.key_type = instance.key.strip().split()[0][4:]

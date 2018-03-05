@@ -1,8 +1,10 @@
 {% extends "base.html" %}
+{% load i18n %}
+
 {% block content %}
 <div class='row'>
 	<div class='col-12'>
-		Hallo welt.
+		<h1>{% blocktrans with name=user.username %}Hello {{ name }}{% endblocktrans %}</h1>
 
 		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus laboriosam inventore mollitia, facere, voluptates ipsa pariatur deserunt voluptatibus minima similique nam officia perferendis dignissimos ex repellendus suscipit doloremque, deleniti modi.
 		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta aspernatur natus, alias ullam dolorum dolor repellat ducimus, fuga asperiores quod, ea impedit obcaecati doloremque. Laborum deserunt aliquid doloribus ut voluptates!
