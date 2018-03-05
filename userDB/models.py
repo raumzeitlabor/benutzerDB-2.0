@@ -46,10 +46,10 @@ class MACAddress(models.Model):
     hostname = models.CharField(max_length=32)
 
     def __str__(self):
-        return self.user.username
+        return self.profile.user.username
 
     class Meta:
-        ordering = ['user__username']
+        ordering = ['profile__user__username']
         verbose_name = _('MAC address')
         verbose_name_plural = _('MAC addresses')
 
