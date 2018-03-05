@@ -35,6 +35,7 @@ class Profile(models.Model):
         verbose_name = _('profile')
         verbose_name_plural = _('profiles')
 
+
 class MACAddress(models.Model):
     """Stores a MAC address for a given host, associated with a user.
 
