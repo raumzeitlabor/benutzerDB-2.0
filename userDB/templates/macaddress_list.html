@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class='row'>
+	<div class='col-12'>
+		<h1>{% trans 'MAC addresses' %}</h1>
+
+		<p>{% trans 'If you add your devices\' MAC addresses, you will automatically be listed as present on the status pages if you are connected to one of the WiFi networks.' %}</p>
+
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th scope="col">Hostname</th>
+					<th scope="col">MAC</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for mac in macaddress_list %}
+					<tr>
+						<td>{{ mac.hostname }}</td>
+						<td>{{ mac.mac }}</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</div>
+{% endblock %}

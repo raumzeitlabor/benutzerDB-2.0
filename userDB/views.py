@@ -12,3 +12,8 @@ def index(request):
 class SSHKeyView(ListView):
     queryset = models.SSHKey.objects.all()
     template_name = 'sshkey_list.html'
+
+
+class MACAddressView(ListView):
+    queryset = models.MACAddress.objects.all()
+    template_name = 'macaddress_list.html'
