@@ -44,6 +44,14 @@ class MACAddress(models.Model):
     mac = MACAddressField(blank=False)
     hostname = models.CharField(max_length=32)
 
+    def __str__(self):
+        return self.user.username
+
+    class Meta:
+        ordering = ['user__username']
+        verbose_name = _('MAC address')
+        verbose_name_plural = _('MAC addresses')
+
 
 # When a User is a member, automatically generate a random 6-digit PIN if there
 # is none yet.
