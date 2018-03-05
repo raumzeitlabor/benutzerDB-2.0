@@ -9,5 +9,5 @@ Installation
 * virtualenvironment anlegen
 * pip install -r requirements.txt
 * python manage.py migrate
-* python createsuperuser
+* python manage.py createsuperuser
 * python manage.py runserver
