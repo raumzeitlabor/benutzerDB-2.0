@@ -30,3 +30,4 @@ class SSHKeyAdmin(admin.ModelAdmin):
 @admin.register(MACAddress)
 class MACAdressAdmin(admin.ModelAdmin):
     list_display = ("profile", "mac", "hostname")
+    search_fields = ('profile__user__username', "mac", "hostname")
