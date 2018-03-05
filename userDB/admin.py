@@ -24,4 +24,4 @@ class SSHKeyAdmin(admin.ModelAdmin):
 
 @admin.register(MACAddress)
 class MACAdressAdmin(admin.ModelAdmin):
-    list_display = ('user', 'mac', 'hostname')
+    list_display = ("profile", "mac", "hostname")

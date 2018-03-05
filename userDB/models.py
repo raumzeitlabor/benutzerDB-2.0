@@ -40,7 +40,8 @@ class MACAddress(models.Model):
 
     A user can have multiple MAC addresses associated with them.
     """
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE,
+                                related_name='mac_address')
     mac = MACAddressField(blank=False)
     hostname = models.CharField(max_length=32)
 
