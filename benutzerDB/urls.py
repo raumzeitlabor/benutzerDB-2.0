@@ -19,6 +19,7 @@ class SSHKeySerializer(serializers.HyperlinkedModelSerializer):
         fields = ('profile', 'key', 'key_type', 'hash_md5')
 
     hash_md5 = serializers.CharField(max_length=47, read_only=True)
+    key_type = serializers.CharField(max_length=30, read_only=True)
 
 
 class MACAddressSerializer(serializers.HyperlinkedModelSerializer):

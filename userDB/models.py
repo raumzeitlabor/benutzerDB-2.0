@@ -104,4 +104,6 @@ def create_pin(sender, instance, **kwargs):
         ssh = sshpubkeys.SSHKey(instance.key)
         ssh.parse()
         instance.hash_md5 = ssh.hash_md5()[4:]
-        instance.key_type = instance.key.strip().split()[0][4:]
+        #instance.key_type = instance.key.strip().split()[0][4:]
+        instance.key_type = ssh.key_type.decode()
+        instance.key = ssh.keydata.rstrip(ssh.comment).strip()
