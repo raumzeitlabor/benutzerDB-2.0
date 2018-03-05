@@ -13,14 +13,6 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('url', 'username', 'email', 'is_staff')
 
 
-class ProfileSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = Profile
-        fields = ('user',)
-
-    user = UserSerializer()
-
-
 class SSHKeySerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = SSHKey
@@ -28,6 +20,15 @@ class SSHKeySerializer(serializers.HyperlinkedModelSerializer):
 
     hash_md5 = serializers.CharField(
         max_length=47, read_only=True)
+
+
+class ProfileSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Profile
+        fields = ('user', 'ssh_keys')
+
+    user = UserSerializer()
+    ssh_keys = SSHKeySerializer(many=True)
 
 
 # ViewSets define the view behavior.
