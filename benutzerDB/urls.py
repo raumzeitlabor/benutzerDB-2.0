@@ -18,17 +18,23 @@ class SSHKeySerializer(serializers.HyperlinkedModelSerializer):
         model = SSHKey
         fields = ('profile', 'key', 'key_type', 'hash_md5')
 
-    hash_md5 = serializers.CharField(
-        max_length=47, read_only=True)
+    hash_md5 = serializers.CharField(max_length=47, read_only=True)
+
+
+class MACAddressSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = MACAddress
+        fields = ('profile', 'mac', 'hostname')
 
 
 class ProfileSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Profile
-        fields = ('user', 'ssh_keys')
+        fields = ('user', 'ssh_keys', 'mac_addresses')
 
     user = UserSerializer()
     ssh_keys = SSHKeySerializer(many=True)
+    mac_addresses = MACAddressSerializer(many=True)
 
 
 # ViewSets define the view behavior.
