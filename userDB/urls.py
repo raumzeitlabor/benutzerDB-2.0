@@ -10,4 +10,6 @@ urlpatterns = [
         name='switch-language'),
     url(r'ssh/', views.SSHKeyView.as_view(), name='ssh-keys-list'),
     url(r'mac/', views.MACAddressView.as_view(), name='mac-addresses-list'),
+    # compatibility with old BenutzerDB
+    url(r'BenutzerDB/pins/', views.pinpad_pinlist, name='pinpad-pinlist'),
 ]

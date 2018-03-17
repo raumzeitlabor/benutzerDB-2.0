@@ -1,15 +1,31 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.views.generic.list import ListView
 from django.utils.translation import LANGUAGE_SESSION_KEY
 from django.utils import translation
+import json
 from . import models
 
 
 @login_required
 def index(request):
     return render(request, "index.html")
+
+@user_passes_test(lambda u: u.is_superuser)
+def pinpad_pinlist(request):
+    '''List all pins.
+
+    This view is only meant to be used by the Pinpad and exists for
+    compatibility with the old BenutzerDB. It should eventually be removed once
+    the Pinpad has been migrated to use the new API.
+    '''
+    members = models.Profile.objects.filter(member=True)
+    pinlist = {member.user.get_username(): str(member.pin)
+               for member in members}
+    data = json.dumps(pinlist)
+    print(data)
+    return HttpResponse(data, content_type='application/json')
 
 
 class SSHKeyView(ListView):
