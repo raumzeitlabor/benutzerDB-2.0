@@ -137,7 +137,7 @@ LOGIN_REDIRECT_URL = '/'
 
 
 # Pinpad user/password (development)
-PINPAD_USER = "pinpad"
+PINPAD_USERNAME = "pinpad"
 PINPAD_PASSWORD = "supersecretdevelopmentpasswordthatisdefinitelynotongithub"
 
 try:
