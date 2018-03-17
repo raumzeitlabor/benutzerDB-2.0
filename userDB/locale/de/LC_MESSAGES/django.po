@@ -1,0 +1,93 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-03-05 02:02+0100\n"
+"PO-Revision-Date: 2018-03-05 02:02+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.0.5\n"
+
+#: models.py:23
+msgid "Member"
+msgstr "Mitglied"
+
+#: models.py:27
+msgid "PIN"
+msgstr "PIN"
+
+#: models.py:28
+msgid "Will be automatically generated if user is set as member"
+msgstr "Wird automatisch generiert falls der User als Mitglied markiert ist"
+
+#: models.py:35
+msgid "profile"
+msgstr "Profil"
+
+#: models.py:36
+msgid "profiles"
+msgstr "Profile"
+
+#: models.py:53
+msgid "MAC address"
+msgstr "MAC-Adresse"
+
+#: models.py:54 templates/macaddress_list.html:7
+msgid "MAC addresses"
+msgstr "MAC-Adressen"
+
+#: models.py:83
+msgid "Name"
+msgstr "Name"
+
+#: models.py:84 models.py:96
+msgid "SSH key"
+msgstr "SSH-Key"
+
+#: models.py:85
+msgid "Key type"
+msgstr "Key-Typ"
+
+#: models.py:88
+msgid "MD5 hash"
+msgstr "MD5-Hash"
+
+#: models.py:89
+msgid "Automatically generated hash of the key"
+msgstr "Automatisch generierter Hash des Keys"
+
+#: models.py:97 templates/sshkey_list.html:7
+msgid "SSH keys"
+msgstr "SSH-Keys"
+
+#: templates/index.html:7
+#, python-format
+msgid "Hello %(name)s"
+msgstr "Hallo %(name)s"
+
+#: templates/macaddress_list.html:9
+msgid ""
+"If you add your devices' MAC addresses, you will automatically be listed as "
+"present on the status pages if you are connected to one of the WiFi networks."
+msgstr ""
+"Falls Du die MAC-Adressen deiner Geräte hinzufügst, wirst Du automatisch als "
+"anwesend auf den Statusseiten gelistet, wenn du mit einem der WLAN-Netze "
+"verbunden bist."
+
+#: templates/sshkey_list.html:9
+msgid ""
+"These SSH keys can be used to unlock the room door using <code>ssh tuer@tuer."
+"rzl.so -p 2322</code> ."
+msgstr ""
+"Diese SSH-Keys können genutzt werden, um die Raum-Tür mit <code>ssh "
+"tuer@tuer.rzl.so -p 2322</code>  zu entsperren."

@@ -6,5 +6,8 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
-    url(r'ssh/', views.SSHKeyView.as_view(), name='ssh-keys-list')
+    url(r'^i18n/setlang/(?P<language>[a-zA-Z\-]+)/', views.switch_language,
+        name='switch-language'),
+    url(r'ssh/', views.SSHKeyView.as_view(), name='ssh-keys-list'),
+    url(r'mac/', views.MACAddressView.as_view(), name='mac-addresses-list'),
 ]
