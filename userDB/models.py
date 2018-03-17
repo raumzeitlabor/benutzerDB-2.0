@@ -35,6 +35,12 @@ class Profile(models.Model):
         verbose_name = _('profile')
         verbose_name_plural = _('profiles')
 
+    def save(self):
+        # automatically generate PIN if the user is a member
+        if self.member:
+            self.pin = random.randint(10**5, (10**6)-1)
+        super(Profile, self).save()
+
 
 class MACAddress(models.Model):
     """Stores a MAC address for a given host, associated with a user.
@@ -53,14 +59,6 @@ class MACAddress(models.Model):
         ordering = ['profile__user__username']
         verbose_name = _('MAC address')
         verbose_name_plural = _('MAC addresses')
-
-
-# When a User is a member, automatically generate a random 6-digit PIN if there
-# is none yet.
-@receiver(pre_save, sender=Profile)
-def create_pin(sender, instance, **kwargs):
-    if instance.member and not instance.pin:
-        instance.pin = random.randint(10**5, (10**6)-1)
 
 
 # Whenever a User object is created, create a Profile for it.
