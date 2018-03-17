@@ -134,3 +134,13 @@ REST_FRAMEWORK = {
 }
 
 LOGIN_REDIRECT_URL = '/'
+
+
+# Pinpad user/password (development)
+PINPAD_USER = "pinpad"
+PINPAD_PASSWORD = "supersecretdevelopmentpasswordthatisdefinitelynotongithub"
+
+try:
+    from .settings_local import *
+except ImportError:
+    pass
