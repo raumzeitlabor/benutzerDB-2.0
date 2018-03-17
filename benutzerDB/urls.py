@@ -2,6 +2,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.auth.models import User
 from rest_framework import routers, serializers, viewsets
+from rest_framework.documentation import include_docs_urls
 from django.contrib.auth import views as auth_views
 from userDB.models import *
 
@@ -63,6 +64,7 @@ router.register(r'profiles', ProfileViewSet)
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
     url(r'^api/', include(router.urls)),
+    url(r'^docs/', include_docs_urls(title="RaumZeitPanel API")),
     url(r'^api-auth/', include('rest_framework.urls',
                                namespace='rest_framework')),
     url(r'^admin/', admin.site.urls),
