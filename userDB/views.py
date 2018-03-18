@@ -30,9 +30,12 @@ def pinpad_pinlist(request):
     the Pinpad has been migrated to use the new API.
     '''
     members = models.Profile.objects.filter(member=True)
-    pinlist = {member.user.get_username(): str(member.pin)
-               for member in members}
-    data = json.dumps(pinlist)
+    pinlist = [{"handle": member.user.get_username(), "pin": str(member.pin)}
+               for member in members]
+    # The JSON should be sorted to ensure that the CRC which is calculated by
+    # the pinpad-controller on every sync  does not change if no PINs have
+    # changed.
+    data = json.dumps(pinlist, sort_keys=True)
     return HttpResponse(data, content_type='application/json')
 
 
