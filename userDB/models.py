@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.models.signals import post_save, pre_save
 from django.utils.translation import ugettext_lazy as _
+from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 from django.dispatch import receiver
 from macaddress.fields import MACAddressField
@@ -74,13 +75,23 @@ def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
 
 
+def ssh_key_validator(key):
+    try:
+        ssh = sshpubkeys.SSHKey(key)
+        ssh.parse()
+    except sshpubkeys.MalformedDataError:
+        raise ValidationError("Invalid SSH key.")
+
+
 class SSHKey(models.Model):
     """Stores an SSH public key that can be used to unlock the door."""
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE,
                                 related_name='ssh_keys')
 
     name = models.CharField(max_length=200, verbose_name=_('Name'))
-    key = models.TextField(verbose_name=_('SSH key'))
+    key = models.TextField(validators=[ssh_key_validator],
+                           verbose_name=_('SSH key'))
+
     key_type = models.CharField(max_length=30, verbose_name=_('Key type'))
 
     hash_md5 = models.CharField(

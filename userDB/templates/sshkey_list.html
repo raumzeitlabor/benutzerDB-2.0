@@ -4,7 +4,7 @@
 {% block content %}
 <div class='row'>
 	<div class='col-12'>
-		<button type="button" class="btn btn-primary float-right">{% trans 'Add SSH key' %}</button>
+		<a href="{% url 'ssh-keys-add' %}" class="btn btn-primary float-right">{% trans 'Add SSH key' %}</a>
 		<h1>{% trans 'SSH keys' %}</h1>
 
 		<p>{% blocktrans %}These SSH keys can be used to unlock the room door using <code>ssh tuer@tuer.rzl.so -p 2322</code> .{% endblocktrans %}</p>

@@ -2,8 +2,10 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.views.generic.list import ListView
+from django.views.generic.edit import CreateView
 from django.utils.translation import LANGUAGE_SESSION_KEY
 from django.utils import translation
+from django.urls import reverse_lazy
 import json
 from . import models
 
@@ -32,6 +34,16 @@ class SSHKeyView(ListView):
     queryset = models.SSHKey.objects.all()
     template_name = 'sshkey_list.html'
 
+
+class SSHKeyCreate(CreateView):
+    model = models.SSHKey
+    fields = ['name', 'key']
+    template_name = 'sshkey_form.html'
+    success_url = reverse_lazy('ssh-keys-list')
+
+    def form_valid(self, form):
+        form.instance.profile_id = self.request.user.profile.id
+        return super().form_valid(form)
 
 class MACAddressView(ListView):
     queryset = models.MACAddress.objects.all()

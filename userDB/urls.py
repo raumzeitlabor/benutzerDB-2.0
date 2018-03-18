@@ -8,6 +8,7 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^i18n/setlang/(?P<language>[a-zA-Z\-]+)/', views.switch_language,
         name='switch-language'),
+    url(r'ssh/add/', views.SSHKeyCreate.as_view(), name='ssh-keys-add'),
     url(r'ssh/', views.SSHKeyView.as_view(), name='ssh-keys-list'),
     url(r'mac/', views.MACAddressView.as_view(), name='mac-addresses-list'),
     # compatibility with old BenutzerDB
