@@ -31,8 +31,10 @@ def pinpad_pinlist(request):
 
 
 class SSHKeyView(ListView):
-    queryset = models.SSHKey.objects.all()
     template_name = 'sshkey_list.html'
+
+    def get_queryset(self):
+        return models.SSHKey.objects.filter(profile=self.request.user.profile)
 
 
 class SSHKeyCreate(CreateView):
@@ -47,9 +49,11 @@ class SSHKeyCreate(CreateView):
 
 
 class SSHKeyDelete(DeleteView):
-    model = models.SSHKey
     success_url = reverse_lazy('ssh-keys-list')
     template_name = 'sshkey_confirm_delete.html'
+
+    def get_queryset(self):
+        return models.SSHKey.objects.filter(profile=self.request.user.profile)
 
 
 class MACAddressView(ListView):
