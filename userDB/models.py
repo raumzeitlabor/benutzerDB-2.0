@@ -36,11 +36,11 @@ class Profile(models.Model):
         verbose_name = _('profile')
         verbose_name_plural = _('profiles')
 
-    def save(self):
+    def save(self, *args, **kwargs):
         # automatically generate PIN if the user is a member
         if self.member:
             self.pin = random.randint(10**5, (10**6)-1)
-        super(Profile, self).save()
+        super().save(*args, **kwargs)
 
 
 class MACAddress(models.Model):
