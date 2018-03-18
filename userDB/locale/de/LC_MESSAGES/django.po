@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-05 02:02+0100\n"
-"PO-Revision-Date: 2018-03-05 02:02+0100\n"
+"POT-Creation-Date: 2018-03-18 19:14+0000\n"
+"PO-Revision-Date: 2018-03-18 20:18+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -18,64 +18,126 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 2.0.5\n"
 
-#: models.py:23
+#: userDB/models.py:24
 msgid "Member"
 msgstr "Mitglied"
 
-#: models.py:27
+#: userDB/models.py:28 userDB/templates/base.html:33
 msgid "PIN"
 msgstr "PIN"
 
-#: models.py:28
+#: userDB/models.py:29
 msgid "Will be automatically generated if user is set as member"
 msgstr "Wird automatisch generiert falls der User als Mitglied markiert ist"
 
-#: models.py:35
+#: userDB/models.py:36
 msgid "profile"
 msgstr "Profil"
 
-#: models.py:36
+#: userDB/models.py:37
 msgid "profiles"
 msgstr "Profile"
 
-#: models.py:53
+#: userDB/models.py:62
 msgid "MAC address"
 msgstr "MAC-Adresse"
 
-#: models.py:54 templates/macaddress_list.html:7
+#: userDB/models.py:63 userDB/templates/base.html:34
+#: userDB/templates/macaddress_list.html:8
 msgid "MAC addresses"
 msgstr "MAC-Adressen"
 
-#: models.py:83
+#: userDB/models.py:92
 msgid "Name"
 msgstr "Name"
 
-#: models.py:84 models.py:96
+#: userDB/models.py:94 userDB/models.py:107
 msgid "SSH key"
 msgstr "SSH-Key"
 
-#: models.py:85
+#: userDB/models.py:96
 msgid "Key type"
 msgstr "Key-Typ"
 
-#: models.py:88
+#: userDB/models.py:99
 msgid "MD5 hash"
 msgstr "MD5-Hash"
 
-#: models.py:89
+#: userDB/models.py:100
 msgid "Automatically generated hash of the key"
 msgstr "Automatisch generierter Hash des Keys"
 
-#: models.py:97 templates/sshkey_list.html:7
+#: userDB/models.py:108 userDB/templates/sshkey_list.html:8
 msgid "SSH keys"
 msgstr "SSH-Keys"
 
-#: templates/index.html:7
+#: userDB/templates/base.html:32
+msgid "Home"
+msgstr "Start"
+
+#: userDB/templates/base.html:35
+msgid "SSH"
+msgstr "SSH"
+
+#: userDB/templates/base.html:56
+msgid "Change password"
+msgstr "Passwort ändern"
+
+#: userDB/templates/base.html:58
+msgid "Admin"
+msgstr "Admin"
+
+#: userDB/templates/base.html:61
+msgid "Logout"
+msgstr "Abmelden"
+
+#: userDB/templates/index.html:7
 #, python-format
 msgid "Hello %(name)s"
 msgstr "Hallo %(name)s"
 
-#: templates/macaddress_list.html:9
+#: userDB/templates/macaddress_confirm_delete.html:8
+msgid "Delete MAC address"
+msgstr "MAC-Adresse löschen"
+
+#: userDB/templates/macaddress_confirm_delete.html:12
+#, python-format
+msgid "Are you sure you want to delete the MAC address %(key)s?"
+msgstr "Bist Du sicher dass Du die MAC-Adresse %(key)s löschen möchtest?"
+
+#: userDB/templates/macaddress_confirm_delete.html:14
+#: userDB/templates/sshkey_confirm_delete.html:14
+msgid "Yes, delete"
+msgstr "Ja, löschen"
+
+#: userDB/templates/macaddress_form.html:8
+#: userDB/templates/macaddress_list.html:7
+msgid "Add MAC address"
+msgstr "MAC-Adresse hinzufügen"
+
+#: userDB/templates/macaddress_form.html:14
+#, python-format
+msgid ""
+"Do you want to associate the device with MAC address <strong>%(mac)s</"
+"strong> (%(oui)s), connected to WiFi network <strong>%(essid)s</strong> with "
+"your account?"
+msgstr ""
+"Möchtest du das Gerät mit der MAC-Adresse <strong>%(mac)s</strong> "
+"(%(oui)s), verbunden mit dem WiFi-Netzwerk <strong>%(essid)s</strong>, mit "
+"deinem Account assoziieren?"
+
+#: userDB/templates/macaddress_form.html:18
+msgid "Associate MAC"
+msgstr "MAC assoziieren"
+
+#: userDB/templates/macaddress_form.html:20
+msgid ""
+"Could not fetch client details. Please ensure you're connected to the "
+"internal WiFi network and are connected to the panel using the internal "
+"hostname."
+msgstr ""
+
+#: userDB/templates/macaddress_list.html:10
 msgid ""
 "If you add your devices' MAC addresses, you will automatically be listed as "
 "present on the status pages if you are connected to one of the WiFi networks."
@@ -84,10 +146,53 @@ msgstr ""
 "anwesend auf den Statusseiten gelistet, wenn du mit einem der WLAN-Netze "
 "verbunden bist."
 
-#: templates/sshkey_list.html:9
+#: userDB/templates/macaddress_list.html:31
+#, python-format
+msgid ""
+"You don't seem to have any MAC addresses at the moment. You can <a href="
+"\"%(add_url)s\">add one</a>."
+msgstr ""
+"Du scheinst aktuell keine MAC-Adressen zu haben. Du kannst <a href="
+"\"%(add_url)s\">eine hinzufügen</a>."
+
+#: userDB/templates/sshkey_confirm_delete.html:8
+msgid "Delete SSH key"
+msgstr "SSH-Key löschen"
+
+#: userDB/templates/sshkey_confirm_delete.html:12
+#, python-format
+msgid "Are you sure you want to delete the key %(key)s?"
+msgstr "Bist Du sicher dass du den Key %(key)s löschen möchtest?"
+
+#: userDB/templates/sshkey_form.html:8 userDB/templates/sshkey_list.html:7
+msgid "Add SSH key"
+msgstr "SSH-Key hinzufügen"
+
+#: userDB/templates/sshkey_form.html:15
+msgid "Add key"
+msgstr "Key hinzufügen"
+
+#: userDB/templates/sshkey_list.html:10
 msgid ""
 "These SSH keys can be used to unlock the room door using <code>ssh tuer@tuer."
 "rzl.so -p 2322</code> ."
 msgstr ""
 "Diese SSH-Keys können genutzt werden, um die Raum-Tür mit <code>ssh "
 "tuer@tuer.rzl.so -p 2322</code>  zu entsperren."
+
+#: userDB/templates/sshkey_list.html:31
+#, python-format
+msgid ""
+"You don't seem to have any SSH keys at the moment. You can <a href="
+"\"%(add_url)s\">add one</a>."
+msgstr ""
+"Du scheinst aktuell keine SSH-Keys zu haben. Du kannst <a href=\"%(add_url)s"
+"\">einen hinzufügen</a>."
+
+#: userDB/views.py:123
+msgid ""
+"You need to be in one of the RaumZeitLabor wifi networks to add your MAC "
+"address."
+msgstr ""
+"Du musst mit einem der RaumZeitLabor-WLAN-Netze verbunden sein, um deine MAC-"
+"Adresse hinzuzufügen."
