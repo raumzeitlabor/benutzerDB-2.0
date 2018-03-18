@@ -84,9 +84,20 @@ def get_ip_details(ip):
         'password': getattr(settings, 'UNIFI_CONTROLLER_PASS'),
     }
 
+    if not all((api_base, api_login['username'], api_login['password'])):
+        return None
+
     s = requests.Session()
-    r = s.post('{}/api/login'.format(api_base), json=api_login, verify=False)
-    r = s.get('{}/api/s/default/stat/sta'.format(api_base))
+    s.headers.update({'User-Agent': 'benutzerdb2'})
+    s.verify = False
+
+    try:
+        r = s.post('{}/api/login'.format(api_base), json=api_login)
+        r.raise_for_status()
+        r = s.get('{}/api/s/default/stat/sta'.format(api_base))
+        r.raise_for_status()
+    except requests.exceptions.RequestException:
+        return None
 
     clients = r.json()
     clients = list(filter(lambda c: c['ip'] == ip, clients['data']))
