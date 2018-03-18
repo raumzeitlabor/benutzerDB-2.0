@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, DeleteView
 from django.utils.translation import LANGUAGE_SESSION_KEY
+from django.utils.decorators import method_decorator
 from django.utils import translation
 from django.urls import reverse_lazy
 import json
@@ -30,6 +31,7 @@ def pinpad_pinlist(request):
     return HttpResponse(data, content_type='application/json')
 
 
+@method_decorator(login_required, name='dispatch')
 class SSHKeyView(ListView):
     template_name = 'sshkey_list.html'
 
@@ -37,6 +39,7 @@ class SSHKeyView(ListView):
         return models.SSHKey.objects.filter(profile=self.request.user.profile)
 
 
+@method_decorator(login_required, name='dispatch')
 class SSHKeyCreate(CreateView):
     model = models.SSHKey
     fields = ['name', 'key']
@@ -48,6 +51,7 @@ class SSHKeyCreate(CreateView):
         return super().form_valid(form)
 
 
+@method_decorator(login_required, name='dispatch')
 class SSHKeyDelete(DeleteView):
     success_url = reverse_lazy('ssh-keys-list')
     template_name = 'sshkey_confirm_delete.html'
@@ -56,6 +60,7 @@ class SSHKeyDelete(DeleteView):
         return models.SSHKey.objects.filter(profile=self.request.user.profile)
 
 
+@method_decorator(login_required, name='dispatch')
 class MACAddressView(ListView):
     queryset = models.MACAddress.objects.all()
     template_name = 'macaddress_list.html'
