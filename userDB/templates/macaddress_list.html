@@ -22,6 +22,8 @@
 						<td>{{ mac.hostname }}</td>
 						<td>{{ mac.mac }}</td>
 					</tr>
+				{% empty %}
+					<tr><td colspan="2">{% blocktrans %}You don't seem to have any MAC addresses at the moment. You can <a href="">add one</a>.{% endblocktrans %}</td></tr>
 				{% endfor %}
 			</tbody>
 		</table>

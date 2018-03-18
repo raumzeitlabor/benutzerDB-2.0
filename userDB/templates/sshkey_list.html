@@ -26,6 +26,9 @@
 						<td>{{ key.hash_md5 }}</td>
 						<td><a href="{% url 'ssh-keys-delete' key.pk %}">Delete</a></td>
 					</tr>
+				{% empty %}
+					{% url 'ssh-keys-add' as add_url %}
+					<tr><td colspan="4">{% blocktrans %}You don't seem to have any SSH keys at the moment. You can <a href="{{ add_url }}">add one</a>.{% endblocktrans %}</td></tr>
 				{% endfor %}
 			</tbody>
 		</table>
