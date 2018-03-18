@@ -140,6 +140,10 @@ LOGIN_REDIRECT_URL = '/'
 PINPAD_USERNAME = "pinpad"
 PINPAD_PASSWORD = "supersecretdevelopmentpasswordthatisdefinitelynotongithub"
 
+UNIFI_CONTROLLER_HOST = 'https://unifi.vm.rzl:8443'
+UNIFI_CONTROLLER_USER = 'statusbot'
+UNIFI_CONTROLLER_PASS = None
+
 try:
     from .settings_local import *
 except ImportError:

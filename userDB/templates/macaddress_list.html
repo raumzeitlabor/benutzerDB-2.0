@@ -4,7 +4,7 @@
 {% block content %}
 <div class='row'>
 	<div class='col-12'>
-		<button type="button" class="btn btn-primary float-right">{% trans 'Add MAC address' %}</button>
+		<a href="{% url 'mac-addresses-add' %}" class="btn btn-primary float-right">{% trans 'Add MAC address' %}</a>
 		<h1>{% trans 'MAC addresses' %}</h1>
 
 		<p>{% trans "If you add your devices' MAC addresses, you will automatically be listed as present on the status pages if you are connected to one of the WiFi networks." %}</p>
@@ -14,6 +14,8 @@
 				<tr>
 					<th scope="col">Hostname</th>
 					<th scope="col">MAC</th>
+					<th scope="col">Vendor</th>
+					<th scope="col">&nbsp;</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -21,9 +23,12 @@
 					<tr>
 						<td>{{ mac.hostname }}</td>
 						<td>{{ mac.mac }}</td>
+						<td>{{ mac.vendor }}</td>
+						<td><a href="{% url 'mac-addresses-delete' mac.pk %}">Delete</a></td>
 					</tr>
 				{% empty %}
-					<tr><td colspan="2">{% blocktrans %}You don't seem to have any MAC addresses at the moment. You can <a href="">add one</a>.{% endblocktrans %}</td></tr>
+					{% url 'mac-addresses-add' as add_url %}
+					<tr><td colspan="4">{% blocktrans %}You don't seem to have any MAC addresses at the moment. You can <a href="{{ add_url }}">add one</a>.{% endblocktrans %}</td></tr>
 				{% endfor %}
 			</tbody>
 		</table>

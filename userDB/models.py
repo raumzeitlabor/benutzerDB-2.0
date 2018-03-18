@@ -52,6 +52,7 @@ class MACAddress(models.Model):
                                 related_name='mac_addresses')
     mac = MACAddressField(blank=False)
     hostname = models.CharField(max_length=32)
+    vendor = models.CharField(max_length=32)
 
     def __str__(self):
         return self.profile.user.username

@@ -12,6 +12,9 @@ urlpatterns = [
     url('ssh/(?P<pk>[0-9]+)/delete/', views.SSHKeyDelete.as_view(),
         name='ssh-keys-delete'),
     url('ssh/', views.SSHKeyView.as_view(), name='ssh-keys-list'),
+    url('mac/add/', views.MACAddressCreate.as_view(), name='mac-addresses-add'),
+    url('mac/(?P<pk>[0-9]+)/delete/', views.MACAddressDelete.as_view(),
+        name='mac-addresses-delete'),
     url('mac/', views.MACAddressView.as_view(), name='mac-addresses-list'),
     # compatibility with old BenutzerDB
     url(r'BenutzerDB/pins/', views.pinpad_pinlist, name='pinpad-pinlist'),
