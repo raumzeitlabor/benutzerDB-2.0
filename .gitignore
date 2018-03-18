@@ -5,3 +5,5 @@
 .venv
 
 *.sublime-*
+
+benutzerDB/settings_local.py
