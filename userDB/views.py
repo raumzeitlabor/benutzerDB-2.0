@@ -10,6 +10,7 @@ from django.core.exceptions import ValidationError
 from django.utils import translation
 from django.urls import reverse_lazy
 from django.conf import settings
+from django.shortcuts import render
 import urllib
 import ipaddress
 import requests
@@ -148,6 +149,9 @@ class MACAddressDelete(DeleteView):
 
     def get_queryset(self):
         return models.MACAddress.objects.filter(profile=self.request.user.profile)
+
+def pin_detail(request):
+    return render(request, template_name='pin.html')
 
 
 def switch_language(request, language):

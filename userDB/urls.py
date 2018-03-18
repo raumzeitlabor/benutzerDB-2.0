@@ -16,6 +16,7 @@ urlpatterns = [
     url('mac/(?P<pk>[0-9]+)/delete/', views.MACAddressDelete.as_view(),
         name='mac-addresses-delete'),
     url('mac/', views.MACAddressView.as_view(), name='mac-addresses-list'),
+    url('pin/', views.pin_detail, name='pin-detail'),
     # compatibility with old BenutzerDB
     url(r'BenutzerDB/pins/', views.pinpad_pinlist, name='pinpad-pinlist'),
 ]

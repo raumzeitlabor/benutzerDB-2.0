@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load bootstrap4 %}
+
+{% block content %}
+<div class='row'>
+	<div class='col-md-12'>
+		<a href='' class='btn btn-danger float-right'>{% trans 'Generate new PIN' %}</a>
+		<h1>{% trans 'PIN' %}</h1>
+		{% if user.profile.member %}
+			<p>{% trans 'This is your PIN. You can use it to unlock the main door. Please make sure to keep it secret.' %}
+			<p class='pin'>{{ user.profile.pin }}</p>
+			<p><small>({% trans 'Hover to show' %})</small></p>
+		{% else %}
+			<p>{% trans "You don't seem to have a PIN or your profile does not have the 'member' flag set." %}</p>
+			<p>{% trans "Please make sure your profile details are correct and ask the board to confirm your membership status. A PIN will then be generated automatically." %}</p>
+		{% endif %}
+	</div>
+</div>
+{% endblock %}
