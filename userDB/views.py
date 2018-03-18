@@ -70,8 +70,10 @@ class SSHKeyDelete(DeleteView):
 
 @method_decorator(login_required, name='dispatch')
 class MACAddressView(ListView):
-    queryset = models.MACAddress.objects.all()
     template_name = 'macaddress_list.html'
+
+    def get_queryset(self):
+        return models.MACAddress.objects.filter(profile=self.request.user.profile)
 
 
 def get_ip_details(ip):
