@@ -27,7 +27,6 @@ def pinpad_pinlist(request):
     pinlist = {member.user.get_username(): str(member.pin)
                for member in members}
     data = json.dumps(pinlist)
-    print(data)
     return HttpResponse(data, content_type='application/json')
 
 
@@ -78,5 +77,4 @@ def switch_language(request, language):
             path=settings.LANGUAGE_COOKIE_PATH,
             domain=settings.LANGUAGE_COOKIE_DOMAIN,
             )
-
     return response
