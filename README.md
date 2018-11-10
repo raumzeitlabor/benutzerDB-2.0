@@ -6,8 +6,8 @@ Die neue RZL benutzerDB. Jetzt in Django.
 Installation
 ------------
 
-* virtualenvironment anlegen
-* pip install -r requirements.txt
+* pipenv install --python 3.6
+* pipenv shell
 * python manage.py migrate
 * python manage.py createsuperuser
 * python manage.py runserver
