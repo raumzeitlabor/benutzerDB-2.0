@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'bootstrap4',
     'rest_framework',
     'django_gravatar',
+    'stronghold',
 ]
 
 MIDDLEWARE = [
@@ -52,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'stronghold.middleware.LoginRequiredMiddleware',
 ]
 
 ROOT_URLCONF = 'benutzerDB.urls'
