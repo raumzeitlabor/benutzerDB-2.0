@@ -13,7 +13,7 @@ cffi = "==1.11.5"
 cryptography = ">=2.3"
 coreapi = "==2.3.3"
 decorator = "==4.1.2"
-django = ">=1.11.15"
+django = ">=2.1.6"
 "django-bootstrap4" = "==0.0.4"
 django-filter = "==1.1.0"
 "django-gravatar2" = "==1.4.2"
@@ -43,6 +43,7 @@ traitlets = "==4.3.2"
 wcwidth = "==0.1.7"
 wrapt = "==1.10.11"
 django-stronghold = "*"
+pip = "==9.0.2"
 
 
 [dev-packages]
