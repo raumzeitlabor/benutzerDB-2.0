@@ -11,7 +11,7 @@ from userDB.models import *
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
-        fields = ('url', 'username', 'email', 'is_staff')
+        fields = ('url', 'username')
 
 
 class SSHKeySerializer(serializers.HyperlinkedModelSerializer):
